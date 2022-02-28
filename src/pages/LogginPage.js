@@ -1,49 +1,49 @@
-import { getAllUsers, getAllQuestions } from "../DATA";
 import { useDispatch, useSelector } from "react-redux";
-import { loadUsers, loadQuestions } from "../actions";
+import { getInitialData, selectActiveUser } from "../actions";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Form, Container, Row, Col, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function LogginPage() {
-
-  const [value, setValue] = useState("");
-  const [submitting, setSubmitting] = useState(false);
   const users = useSelector((state) => state.users);
-  console.log(users, "users");
+  const activeUser = useSelector((state) =>state.activeUser);
+  console.log(activeUser, "activeUser");
   const dispatch = useDispatch();
 
-  getAllUsers().then((res) => {
-    dispatch(loadUsers(res));
-  });
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitting(true); 
-  }
+  useEffect(() => {
+    dispatch(getInitialData(dispatch));
+  }, []);
 
   const handleChange = (e) => {
-    setValue(e.target.value);
+    dispatch(selectActiveUser(Object.values(users).filter(user=>user.id == e.target.value)));
   };
-  // getAllQuestions().then((res)=>{dispatch(loadQuestions(res))})
   return (
     <div>
-     <form onSubmit={handleSubmit}>
-      <p>Choose your Account:</p>
-       <select value={value} onChange={handleChange}>
-        {Object.values(users).map((user, i) => {
-          console.log(user, "the USER");
-          return (
-            <option key={i} value={user}>
-              {user}
-            </option>
-          );
-        })}
-      </select>
-      <button onClick={handleSubmit}>Submit</button>
-      {submitting && <Link to="/Home"></Link>}
-      </form>
+      <Container>
+        <Row className="mt-5">
+          <Col>
+            <Form.Select size="lg" onChange={(e)=>{handleChange(e)}}>
+              <option>Choose Your Account .. </option>
+              {Object.values(users).map((user, i) => {
+                return (
+                  <option key={i} value={user.id}>
+                    {user.fullname}
+                  </option>
+                );
+              })}
+            </Form.Select>
+          </Col>
+          <Col>
+            <Link to="/Home">
+              <Button variant="dark" size="lg">
+                Log In
+              </Button>
+            </Link>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
-
-    }
+}
 export default LogginPage;
