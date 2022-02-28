@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function LogginPage() {
   const users = useSelector((state) => state.users);
+  console.log(users,"users");
   const activeUser = useSelector((state) =>state.activeUser);
   console.log(activeUser, "activeUser");
   const dispatch = useDispatch();

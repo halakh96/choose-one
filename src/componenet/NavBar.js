@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 
 
 const NavBar = () => {
-    const user = useSelector((state)=>state);
-    console.log(user,"state");
+  const activeUserInfo = useSelector((state)=>state.activeUser);
+  console.log(activeUserInfo,"activeUserInfo");
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -17,9 +17,13 @@ const NavBar = () => {
             <Nav.Link href="#">Add Question</Nav.Link>
           </Nav>
           <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text className="me-2">
-              Signed in as : <a href="#">userName</a>
+          {Object.values(activeUserInfo).map((info,i)=>{
+             return (
+              <Navbar.Text className="me-2">
+                    Signed in as : <a>{info.fullname}</a>
             </Navbar.Text>
+             );
+            })}
            <Link to="/"><Button variant="outline-secondary">Log Out</Button></Link>
           </Navbar.Collapse>
         </Container>
@@ -29,3 +33,5 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+

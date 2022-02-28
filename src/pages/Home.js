@@ -1,5 +1,5 @@
-import NavBar from "../componenets/NavBar";
-import QuestionsCard from "../componenets/QuestionsCard";
+import NavBar from "../componenet/NavBar";
+import QuestionsCard from "../componenet/QuestionsCard";
 
 function Home() {
   
