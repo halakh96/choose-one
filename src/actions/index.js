@@ -1,4 +1,4 @@
-import { LOAD_USERS, LOAD_QUESTIONS, ACTIVE_USER } from "./types";
+import { LOAD_USERS, LOAD_QUESTIONS, ACTIVE_USER, ADD_QUESTION } from "./types";
 import { getAllUsers, getAllQuestions } from "../DATA";
 
 // ---Action Creators--
@@ -26,10 +26,18 @@ export const selectActiveUser = (user) => {
   };
 };
 
+// Add new question
+export const newQuestion = (question) => {
+  return {
+    type: ADD_QUESTION,
+    question,
+  };
+};
+
 // Thunk Function
 export const getInitialData = () => {
-  return function(dispatch) {
+  return function (dispatch) {
     getAllUsers().then((res) => dispatch(loadUsers(res)));
     getAllQuestions().then((res) => dispatch(loadQuestions(res)));
-  }
-} 
+  };
+};

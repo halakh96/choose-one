@@ -16,7 +16,6 @@ const Answered = () => {
         )
           return (
             <Card key={index} style={{ width: "25rem" }}>
-              <Card.Img variant="top" src={question.creator} />
               <ListGroup variant="flush">
                 <ListGroup.Item>{question.firstOption.string}</ListGroup.Item>
                 <ListGroup.Item>{question.secondOption.string}</ListGroup.Item>
