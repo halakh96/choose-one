@@ -10,7 +10,7 @@ function AddQuestion() {
     const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    // dispatch(addNewQuestion()); 
+   
   }
   return (
     <>

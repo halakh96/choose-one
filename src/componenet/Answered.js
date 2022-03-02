@@ -4,32 +4,30 @@ import { useSelector } from "react-redux";
 
 const Answered = () => {
   const questions = useSelector((state) => state.questions);
-  const users = useSelector((state) => state.users);
-  const activeUser = useSelector((state) => state.activeUser);
+  const activeUser = Object.values(useSelector((state) => state.activeUser));
+  const answers = Object.keys(activeUser[0].answers);
+  const users = Object.values(useSelector((state) => state.users));
+  
   return (
-    <>
-      {Object.values(activeUser).map((item) => {
-        Object.values(questions).map((question, index) => {
-          // console.log(Object.keys(item.answers),"ansrwedQ");
-          //      console.log(question.id,"allQ");
-         
-          if (Object.keys(item.answers).includes(question.id))
-            // console.log(question.firstOption.string,question.secondOption.string);
-           
-          return (
-            <Card
-              className="m-5 p-5"
-              border="dark"
-              key={index}
-              style={{ width: "25rem" }}
-            >
-              <Button variant="outline-dark">{question.firstOption.string}</Button>
-              <Button variant="outline-dark">{question.secondOption.string}</Button>
-            </Card>
-          );
-        });
-      })}
-    </>
+    <div>
+      {Object.values(questions).filter((question)=>answers.includes(question.id)).map((question,index)=>{
+       const imgUrl = users.filter((user)=>user.id == question.creator)[0].imgUrl;
+    
+         return (
+          <Card
+            className="m-5 p-5"
+            border="dark"
+            key={index}
+            style={{ width: "25rem" }}
+          >
+            <Card.Img variant="top" src={imgUrl} />
+            <Button variant="outline-dark">{question.firstOption.string}</Button>
+            <Button variant="outline-dark">{question.secondOption.string}</Button>
+          </Card>
+        );
+      })
+      }
+    </div>
   );
 };
 
