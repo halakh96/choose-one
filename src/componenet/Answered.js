@@ -1,27 +1,33 @@
 import React from "react";
-import { Card, ListGroup } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 const Answered = () => {
   const questions = useSelector((state) => state.questions);
   const users = useSelector((state) => state.users);
-  console.log(questions, "questions");
+  const activeUser = useSelector((state) => state.activeUser);
   return (
     <>
-      {Object.values(questions).map((question, index) => {
-        console.log(question, "question");
-        if (
-          question.firstOption.votes.length !== 0 ||
-          question.secondOption.votes.length !== 0
-        )
+      {Object.values(activeUser).map((item) => {
+        Object.values(questions).map((question, index) => {
+          // console.log(Object.keys(item.answers),"ansrwedQ");
+          //      console.log(question.id,"allQ");
+         
+          if (Object.keys(item.answers).includes(question.id))
+            // console.log(question.firstOption.string,question.secondOption.string);
+           
           return (
-            <Card key={index} style={{ width: "25rem" }}>
-              <ListGroup variant="flush">
-                <ListGroup.Item>{question.firstOption.string}</ListGroup.Item>
-                <ListGroup.Item>{question.secondOption.string}</ListGroup.Item>
-              </ListGroup>
+            <Card
+              className="m-5 p-5"
+              border="dark"
+              key={index}
+              style={{ width: "25rem" }}
+            >
+              <Button variant="outline-dark">{question.firstOption.string}</Button>
+              <Button variant="outline-dark">{question.secondOption.string}</Button>
             </Card>
           );
+        });
       })}
     </>
   );

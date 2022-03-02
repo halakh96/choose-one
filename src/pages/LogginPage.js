@@ -7,9 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function LogginPage() {
   const users = useSelector((state) => state.users);
-  console.log(users,"users");
-  const activeUser = useSelector((state) =>state.activeUser);
-  console.log(activeUser, "activeUser");
+  const activeUser = useSelector((state) => state.activeUser);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,14 +15,23 @@ function LogginPage() {
   }, []);
 
   const handleChange = (e) => {
-    dispatch(selectActiveUser(Object.values(users).filter(user=>user.id == e.target.value)));
+    dispatch(
+      selectActiveUser(
+        Object.values(users).filter((user) => user.id == e.target.value)
+      )
+    );
   };
   return (
     <div>
       <Container>
         <Row className="mt-5">
           <Col>
-            <Form.Select size="lg" onChange={(e)=>{handleChange(e)}}>
+            <Form.Select
+              size="lg"
+              onChange={(e) => {
+                handleChange(e);
+              }}
+            >
               <option>Choose Your Account .. </option>
               {Object.values(users).map((user, i) => {
                 return (

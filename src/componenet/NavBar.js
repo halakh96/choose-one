@@ -13,9 +13,9 @@ const NavBar = () => {
       <Navbar bg="dark" variant="dark">
         <Container>
           <Nav>
-            <Nav.Link href="#">Home</Nav.Link>
-            <Nav.Link href="#">Leader Board </Nav.Link>
-            <Nav.Link href="#">Add Question</Nav.Link>
+            <Nav.Link href="/Home">Home</Nav.Link>
+            <Nav.Link href="/LeaderBoard">Leader Board </Nav.Link>
+            <Nav.Link href="/AddQuestion">Add Question</Nav.Link>
           </Nav>
           <Navbar.Collapse className="justify-content-end">
           {Object.values(activeUserInfo).map((info,i)=>{
