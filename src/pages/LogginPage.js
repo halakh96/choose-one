@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getInitialData, selectActiveUser } from "../actions";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Form, Container, Row, Col, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -26,6 +26,7 @@ function LogginPage() {
       <Container>
         <Row className="mt-5">
           <Col>
+          <Form>
             <Form.Select
               size="lg"
               onChange={(e) => {
@@ -41,6 +42,7 @@ function LogginPage() {
                 );
               })}
             </Form.Select>
+            </Form>
           </Col>
           <Col>
             <Link to="/Home">

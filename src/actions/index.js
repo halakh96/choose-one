@@ -1,7 +1,8 @@
-import { LOAD_USERS, LOAD_QUESTIONS, ACTIVE_USER, ADD_QUESTION } from "./types";
+import { LOAD_USERS, LOAD_QUESTIONS, ACTIVE_USER, ADD_QUESTION, ADD_ANSWER } from "./types";
 import * as api from "../DATA";
 
-// ---Action Creators--
+// ------------ACTION CREATORS----------------
+
 // Users
 export const loadUsers = (users) => {
   return {
@@ -35,16 +36,26 @@ export const addQuestionCreator = (question) => {
   };
 };
 
-// Thunk Function
+// Add answer 
+export const addAnswer = (answer) => {
+return {
+  type:ADD_ANSWER,
+  answer,
+}
+
+}
+
+// -------------THUNK FUNCTIONS---------------
+
 export const getInitialData = () => {
   return function (dispatch) {
-    api.getAllUsers().then((res) => dispatch(loadUsers(res)));
-    api.getAllQuestions().then((res) => dispatch(loadQuestions(res)));
+    api.getAllUsers().then((users) => dispatch(loadUsers(users)));
+    api.getAllQuestions().then((questions) => dispatch(loadQuestions(questions)));
   };
 };
 
 
-// Thunk Function
+
 export const addNewQuestion = (question) => {
   return function (dispatch) {
     api.addQuestion(question).then((res) => dispatch(addQuestionCreator(res)));
@@ -52,5 +63,10 @@ export const addNewQuestion = (question) => {
   };
 };
 
+export const addNewAnswer = (answer) => {
+  return function (dispatch) {
+    api.addAnswerToQuestion(answer).then((res)=> dispatch(addAnswer(res)));
+  }
+}
 
 
