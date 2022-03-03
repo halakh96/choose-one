@@ -2,22 +2,21 @@ import NavBar from "../componenet/NavBar";
 import Form from "react-bootstrap/Form";
 import { Button, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewQuestion } from "../actions";
+import { addNewQuestion, addQuestionCreator } from "../actions";
 
+import { addQuestion } from "../DATA";
 
 function AddQuestion() {
   const dispatch = useDispatch();
   const activeUser = useSelector((state) => state.activeUser);
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      addNewQuestion({
-        activeUser,
-        answerOne: e.target.option1.value,
-        answerTwo: e.target.option2.value,
-      })
-    );
+    addQuestion({
+      activeUser,
+      answerOne: e.target.option1.value,
+      answerTwo: e.target.option2.value,
+    }).then((res) => console.log(res));
   };
 
   return (
