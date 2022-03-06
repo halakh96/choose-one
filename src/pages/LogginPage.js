@@ -7,7 +7,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function LogginPage() {
   const users = useSelector((state) => state.users);
-  const activeUser = useSelector((state) => state.activeUser);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,7 +23,7 @@ function LogginPage() {
   return (
     <div>
       <Container>
-        <Row className="mt-5">
+        <Row className="mt-5 justify-content-center">
           <Col>
           <Form>
             <Form.Select

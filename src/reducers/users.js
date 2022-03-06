@@ -2,25 +2,26 @@ import { LOAD_USERS, ADD_QUESTION, ADD_ANSWER } from "../actions/types";
 
 export default function users(state = [], action) {
   if (action.type === LOAD_USERS) {
-    return { ...action.users };
+    return action.users;
   }
-  if (action.type === ADD_QUESTION) {
+  else if (action.type === ADD_QUESTION) {
     return {
       ...state,
-      [action.user]: {
-        ...state[action.user],
-        questions: state[action.user].questions.concat([action.newquestion.id]),
+      [action.question.creator]: {
+        ...state[action.question.creator],
+        questions: state[action.question.creator].questions.concat([action.question.id]),
       },
     };
   }
-  if (action.type === ADD_ANSWER) {
+  else if (action.type === ADD_ANSWER) {
+    const { authedUser, questionId, answer } = action;
     return {
       ...state,
-      [action.user]: {
-        ...state[action.user],
+      [authedUser]: {
+        ...state[authedUser],
         answers: {
-          ...state[action.user].answers,
-          [action.questionId]: action.answer,
+          ...state[authedUser].answers,
+          [questionId]: answer,
         },
       },
     };
