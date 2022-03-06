@@ -2,25 +2,25 @@ import { LOAD_QUESTIONS, ADD_QUESTION, ADD_ANSWER } from "../actions/types";
 
 export default function questions(state = [], action) {
   if (action.type === LOAD_QUESTIONS) {
-    return { ...action.questions };
+    return action.questions;
   }
-  if (action.type === ADD_QUESTION) {
-    return { ...state, [action.newquestion.id]: action.newquestion };
-  } 
-  if (action.type === ADD_ANSWER) {
-   return {
+  else if (action.type === ADD_QUESTION) {
+    return { ...state, [action.question.id]: action.question };
+  }
+  else if (action.type === ADD_ANSWER) {
+    const { questionId, answer, authedUser } = action;
+    console.log( questionId, answer, authedUser);
+    return {
       ...state,
-      [action.questionId]: {
-        ...state[action.questionId],
-        [action.answer]: {
-          ...state[action.questionId][action.answer],
-          votes: state[action.questionId][action.answer].votes.concat([action.user]),
+      [questionId]: {
+        ...state[questionId],
+        [answer]: {
+          ...state[questionId][answer],
+          votes: state[questionId][answer].votes.concat([authedUser]),
         },
       },
     };
-
-  }
-  else {
+  } else {
     return state;
   }
 }
