@@ -1,27 +1,23 @@
 import React from "react";
 import { Card, Button, Container } from "react-bootstrap";
-import { useSelector , useDispatch} from "react-redux";
-import { addNewAnswer , addAnswer } from "../actions";
-import { addAnswerToQuestion } from "../DATA";
-
+import { useSelector, useDispatch } from "react-redux";
+import { addNewAnswer } from "../actions";
 
 const NonAnswered = () => {
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.questions);
-  const activeUser = Object.values(useSelector((state) => state.activeUser));
-  const answers = Object.keys(activeUser[0].answers);
-  const users = Object.values(useSelector((state) => state.users));
+  const activeUser = useSelector(
+    (state) => state.users[state.activeUser[0].id]
+  );
+  const answers = Object.keys(activeUser.answers);
 
   const handleChange = (e, questionId) => {
     const answer = {
       answer: e.target.value,
-      authedUser: activeUser[0].id,
+      authedUser: activeUser.id,
       questionId: questionId,
     };
-    console.log(answer);
     dispatch(addNewAnswer(answer));
-
-   
   };
   return (
     <Container>
@@ -30,7 +26,7 @@ const NonAnswered = () => {
         .map((question, index) => {
           // const imgUrl = users.filter((user) => user.id == question.creator)[0]
           //   .imgUrl;
-            const questionId = question.id;
+          const questionId = question.id;
           return (
             <Card
               className="m-5 p-5"
@@ -45,17 +41,18 @@ const NonAnswered = () => {
                 }}
                 variant="outline-dark"
                 value="firstOption"
-                style={{ margin:"5px"}}
+                style={{ margin: "5px" }}
               >
                 {question.firstOption.string}
               </Button>
-              <Button  onClick={(e) => {
+              <Button
+                onClick={(e) => {
                   handleChange(e, questionId);
                 }}
                 variant="outline-dark"
                 value="secondOption"
-                 variant="outline-dark"
-                 style={{ margin:"5px"}}>
+                style={{ margin: "5px" }}
+              >
                 {question.secondOption.string}
               </Button>
             </Card>

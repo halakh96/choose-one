@@ -17,7 +17,7 @@ const NavBar = () => {
           <Navbar.Collapse className="justify-content-end">
             {Object.values(activeUserInfo).map((info, i) => {
               return (
-                <Navbar.Text className="me-2">
+                <Navbar.Text key={i} className="me-2">
                   Signed in as : <a>{info.fullname}</a>
                 </Navbar.Text>
               );

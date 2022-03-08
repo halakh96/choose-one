@@ -42,7 +42,7 @@ export const addQuestionCreator = (question) => {
 };
 
 // Add answer
-export const addAnswer = ({ answer, authedUser, questionId }) => {
+export const addAnswerCreator = ({ answer, authedUser, questionId }) => {
   return {
     type: ADD_ANSWER,
     answer,
@@ -64,16 +64,12 @@ export const getInitialData = () => {
 
 export const addNewQuestion = (question) => {
   return function (dispatch) {
-    api.addQuestion(question).then((res) => {dispatch(addQuestionCreator(res))
-     console.log(question,"qusetion");
-     console.log(res,"res")
-    });
+    api.addQuestion(question).then((res) => dispatch(addQuestionCreator(res)));
   };
 };
 
 export const addNewAnswer = (answer) => {
   return function (dispatch) {
-    api.addAnswerToQuestion(answer).then((res) =>{ dispatch(addAnswer(answer))
-    console.log(res,"res")});
+    api.addAnswerToQuestion(answer).then(() => dispatch(addAnswerCreator(answer)));
   };
 };

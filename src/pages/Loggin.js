@@ -25,22 +25,22 @@ function LogginPage() {
       <Container>
         <Row className="mt-5 justify-content-center">
           <Col>
-          <Form>
-            <Form.Select
-              size="lg"
-              onChange={(e) => {
-                handleChange(e);
-              }}
-            >
-              <option>Choose Your Account .. </option>
-              {Object.values(users).map((user, i) => {
-                return (
-                  <option key={i} value={user.id}>
-                    {user.fullname}
-                  </option>
-                );
-              })}
-            </Form.Select>
+            <Form>
+              <Form.Select
+                size="lg"
+                onChange={(e) => {
+                  handleChange(e);
+                }}
+              >
+                <option>Choose Your Account .. </option>
+                {Object.values(users).map((user, i) => {
+                  return (
+                    <option key={i} value={user.id}>
+                      {user.fullname}
+                    </option>
+                  );
+                })}
+              </Form.Select>
             </Form>
           </Col>
           <Col>

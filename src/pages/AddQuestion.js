@@ -2,15 +2,14 @@ import NavBar from "../componenet/NavBar";
 import Form from "react-bootstrap/Form";
 import { Button, Card, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewQuestion, addQuestionCreator } from "../actions";
-import { addQuestion } from "../DATA";
-import { useNavigate } from "react-router";
+import { addNewQuestion } from "../actions";
+import { Navigate } from "react-router-dom";
 
 function AddQuestion() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const activeUser = useSelector((state) => state.activeUser);
-
+ 
+ 
   const handleSubmit = (e) => {
     const question = {
       creator: activeUser[0].id,
@@ -18,8 +17,7 @@ function AddQuestion() {
       answerTwo: e.target.option2.value,
     };
     e.preventDefault();
-    dispatch(addNewQuestion(question));
-    navigate("/Home");
+    dispatch(addNewQuestion(question)).then(<Navigate to="/Home"/>);
   };
 
   return (

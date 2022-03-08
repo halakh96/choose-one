@@ -2,23 +2,18 @@ import { Tabs, Tab } from "react-bootstrap";
 import Answered from "../componenet/Answered";
 import NonAnswered from "../componenet/NonAnswered";
 import NavBar from "../componenet/NavBar";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from 'react-router';
+import { Navigate } from 'react-router-dom';
 
 
 
 function Home() {
-  const navigate = useNavigate();
-  const activeUser = Object.values(useSelector((state) => state.activeUser));
-  console.log(activeUser,"activeUser");
-  useEffect(() => {
-    if ( activeUser.length === 0 ){
-      navigate("/LogginPage");
-    }
-  }, [])
-  
+  const activeUser = useSelector((state) => state.activeUser);
+ 
+  if ( activeUser.length === 0 ){
+    return <Navigate to="/" />;}
   return (
+  
     <div>
       <NavBar />
       <Tabs
