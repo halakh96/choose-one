@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Form, Container, Row, Col, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function LogginPage() {
+function Loggin() {
   const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
 
@@ -55,4 +55,4 @@ function LogginPage() {
     </div>
   );
 }
-export default LogginPage;
+export default Loggin;
