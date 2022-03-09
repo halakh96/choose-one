@@ -2,18 +2,22 @@ import { Tabs, Tab } from "react-bootstrap";
 import Answered from "../componenet/Answered";
 import NonAnswered from "../componenet/NonAnswered";
 import NavBar from "../componenet/NavBar";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Navigate } from 'react-router-dom';
-
-
+import { useEffect } from "react";
 
 function Home() {
+  const navigate = useNavigate();
   const activeUser = useSelector((state) => state.activeUser);
- 
-  if ( activeUser.length === 0 ){
-    return <Navigate to="/" />;}
+
+  // useEffect(() => {
+  //   if (activeUser.length == 0) {
+  //     return navigate("/");
+  //   }
+
+  // }, [])
+
   return (
-  
     <div>
       <NavBar />
       <Tabs
@@ -28,7 +32,6 @@ function Home() {
           <NonAnswered />
         </Tab>
       </Tabs>
-    
     </div>
   );
 }
