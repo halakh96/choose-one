@@ -3,12 +3,13 @@ import Form from "react-bootstrap/Form";
 import { Button, Card, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewQuestion } from "../actions";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 function AddQuestion() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const activeUser = useSelector((state) => state.activeUser);
- 
+  
  
   const handleSubmit = (e) => {
     const question = {
@@ -17,7 +18,9 @@ function AddQuestion() {
       answerTwo: e.target.option2.value,
     };
     e.preventDefault();
-    dispatch(addNewQuestion(question)).then(<Navigate to="/Home"/>);
+    dispatch(addNewQuestion(question));
+    navigate("/home");
+
   };
 
   return (

@@ -64,7 +64,7 @@ export const getInitialData = () => {
 
 export const addNewQuestion = (question) => {
   return function (dispatch) {
-    api.addQuestion(question).then((res) => dispatch(addQuestionCreator(res)));
+    api.addQuestion(question).then((res) => {return dispatch(addQuestionCreator(res))});
   };
 };
 

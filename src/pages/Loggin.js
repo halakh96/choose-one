@@ -12,7 +12,7 @@ function Loggin() {
   useEffect(() => {
     dispatch(getInitialData(dispatch));
   }, []);
-
+  
   const handleChange = (e) => {
     dispatch(
       selectActiveUser(
@@ -25,7 +25,6 @@ function Loggin() {
       <Container>
         <Row className="mt-5 justify-content-center">
           <Col>
-            <Form>
               <Form.Select
                 size="lg"
                 onChange={(e) => {
@@ -41,7 +40,6 @@ function Loggin() {
                   );
                 })}
               </Form.Select>
-            </Form>
           </Col>
           <Col>
             <Link to="/Home">

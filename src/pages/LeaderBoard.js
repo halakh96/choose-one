@@ -6,7 +6,7 @@ function LeaderBoard() {
   const users = Object.values(useSelector((state) => state.users));
 
   return (
-    <>
+    <div>
       <NavBar />
       <Container>
         <CardGroup className="mt-5">
@@ -39,7 +39,7 @@ function LeaderBoard() {
           })}
         </CardGroup>
       </Container>
-    </>
+    </div>
   );
 }
 

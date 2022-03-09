@@ -1,21 +1,24 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Loggin from "./pages/Loggin";
 import AddQuestion from "./pages/AddQuestion";
 import LeaderBoard from "./pages/LeaderBoard";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const App = () => {
   const activeUser = useSelector((state) => state.activeUser);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (activeUser.length == 0) {
-      return <Navigate to="/" />;
+      return navigate("/");
     }
   }, []);
 
+  
   return (
     <div>
       <Routes>

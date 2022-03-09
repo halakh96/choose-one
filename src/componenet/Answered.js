@@ -9,6 +9,7 @@ const Answered = () => {
     (state) => state.users[state.activeUser[0].id]
   );
   const answers = Object.keys(activeUser.answers);
+  
   return (
     <Container>
       {Object.values(questions)
