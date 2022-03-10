@@ -5,9 +5,7 @@ import { useSelector } from "react-redux";
 const Answered = () => {
   const questions = useSelector((state) => state.questions);
   // get the activeUser from users state
-  const activeUser = useSelector(
-    (state) => state.users[state.activeUser[0].id]
-  );
+  const activeUser = useSelector((state) => state.users[state.activeUser[0].id]);
   const answers = Object.keys(activeUser.answers);
   
   return (

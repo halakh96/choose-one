@@ -23,10 +23,11 @@ function Loggin() {
   return (
     <div>
       <Container>
-        <Row className="mt-5 justify-content-center">
-          <Col>
+        <Row className="justify-content-center mt-5">
+          <Col md={8}>
               <Form.Select
                 size="lg"
+                className="mb-2"
                 onChange={(e) => {
                   handleChange(e);
                 }}
@@ -41,10 +42,10 @@ function Loggin() {
                 })}
               </Form.Select>
           </Col>
-          <Col>
+          <Col md={2}>
             <Link to="/Home">
-              <Button variant="dark" size="lg">
-                Log In
+              <Button className="w-100 mb-2"variant="dark" size="lg">
+                 Log In  
               </Button>
             </Link>
           </Col>

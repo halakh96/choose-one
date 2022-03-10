@@ -6,9 +6,7 @@ import { addNewAnswer } from "../actions";
 const NonAnswered = () => {
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.questions);
-  const activeUser = useSelector(
-    (state) => state.users[state.activeUser[0].id]
-  );
+  const activeUser = useSelector((state) => state.users[state.activeUser[0].id]);
   const answers = Object.keys(activeUser.answers);
 
   const handleChange = (e, questionId) => {
