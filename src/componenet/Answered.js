@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Container } from "react-bootstrap";
+import { Button, Card, Container , Row,Col} from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 const Answered = () => {
@@ -10,12 +10,13 @@ const Answered = () => {
   
   return (
     <Container>
+      <Row className="justify-content-center">
       {Object.values(questions)
         .filter((question) => answers.includes(question.id))
         .map((question, index) => {
           return (
             <Card
-              className="m-5 p-5"
+              className=" m-2 p-5"
               border="dark"
               key={index}
               style={{ width: "25rem" }}
@@ -58,6 +59,7 @@ const Answered = () => {
             </Card>
           );
         })}
+        </Row>
     </Container>
   );
 };

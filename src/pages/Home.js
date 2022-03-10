@@ -10,11 +10,11 @@ function Home() {
 
   return (
     <div>
-      <NavBar />
+      <NavBar/>
       <Tabs
         defaultActiveKey="Answered"
         id="uncontrolled-tab-example"
-        className="mb-3"
+        className="mb-4 justify-content-center "
       >
         <Tab eventKey="Answered" title="Answered Questions">
           <Answered />

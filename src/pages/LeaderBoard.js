@@ -16,7 +16,7 @@ function LeaderBoard() {
                 <Card.Img
                   variant="top"
                   src={user.imgUrl}
-                  style={{ width: "50%" }}
+                  style={{ width: "60%" , height:"50%"}}
                 />
                 <Card.Body>
                   <Card.Title>{user.fullname}</Card.Title>
