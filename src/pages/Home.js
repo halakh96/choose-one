@@ -7,15 +7,6 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
 function Home() {
-  const navigate = useNavigate();
-  const activeUser = useSelector((state) => state.activeUser);
-
-  // useEffect(() => {
-  //   if (activeUser.length == 0) {
-  //     return navigate("/");
-  //   }
-
-  // }, [])
 
   return (
     <div>
