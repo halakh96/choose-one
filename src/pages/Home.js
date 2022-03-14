@@ -2,12 +2,8 @@ import { Tabs, Tab } from "react-bootstrap";
 import Answered from "../componenet/Answered";
 import NonAnswered from "../componenet/NonAnswered";
 import NavBar from "../componenet/NavBar";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
 
 function Home() {
-
   return (
     <div>
       <NavBar/>

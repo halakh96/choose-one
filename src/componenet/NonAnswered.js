@@ -9,8 +9,9 @@ const NonAnswered = () => {
   const activeUser = useSelector(
     (state) => state.users[state.activeUser[0].id]
   );
-  const answers = Object.keys(activeUser.answers);
 
+  const answers = Object.keys(activeUser.answers);
+ 
   const handleChange = (e, questionId) => {
     const answer = {
       answer: e.target.value,
