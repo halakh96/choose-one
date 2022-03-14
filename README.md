@@ -7,6 +7,7 @@ A quiz based game which allows user to login, add questions and answer on questi
 * Redux
 
 * Live Demo: (https://halakh96.github.io/choose-one-project/)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
