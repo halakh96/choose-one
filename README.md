@@ -5,8 +5,7 @@ A quiz based game which allows user to login, add questions and answer on questi
 * React
 * React-Bootstrap
 * Redux
-
-* Live Demo: (https://halakh96.github.io/choose-one-project/)
+* Redux Thunk
 
 ## Getting Started
 
