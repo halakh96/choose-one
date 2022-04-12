@@ -1,6 +1,8 @@
 ## Choose One
 A quiz based game which allows user to login, add questions and answer on questions posted by other users. It also has a Leaderboard which shows users with their score.
 
+#### project link : https://halakh96-choose-one.netlify.app
+
 ### Technologies Used:
 * React
 * React-Bootstrap
